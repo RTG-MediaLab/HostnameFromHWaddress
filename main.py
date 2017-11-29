@@ -29,7 +29,7 @@ elif currentos == 'Darwin': #Darwin is the name of the kernel that Apple uses fo
 #Windows
 elif currentos == 'Windows':
 	print("Du bruger Windows")
-	mac = os.popen('').read()
+	mac = os.popen('wmic path win32_networkadapter where index=1 get MACAddress').read()
 	if dochange == 0:
 		#CMD command for changing hostname
 		os.system('wmic computersystem where name="%COMPUTERNAME%" call rename name="' +mac + '"')
