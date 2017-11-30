@@ -17,6 +17,7 @@ if currentos == 'Linux':
 	mac = commands.getoutput('cat /sys/class/net/' + iface + '/address')
 	if dochange == 0:
 
+     		#Change hostname
 		os.system('sudo hostname ' + mac) #The hostname command is volatile, maybe we should consider something else?
 
   		#Change the hosts file
