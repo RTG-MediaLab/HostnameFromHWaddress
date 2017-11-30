@@ -16,7 +16,15 @@ if currentos == 'Linux':
 	iface = 'wlp3s0'
 	mac = commands.getoutput('cat /sys/class/net/' + iface + '/address')
 	if dochange == 0:
-		os.system('sudo hostname ' + mac)
+
+		os.system('sudo hostname ' + mac) #The hostname command is volatile, maybe we should consider something else?
+
+  		#Change the hosts file
+  		hostsfile = open('/etc/hosts', 'w')
+        	hostsfile.write('127.0.0.1	localhost')
+          	hostsfile.write('127.0.1.1	' + mac)
+           	hostsfile.close()
+
 #MacOS
 elif currentos == 'Darwin': #Darwin is the name of the kernel that Apple uses for MacOS
 	print('Du bruger macOS')
@@ -34,8 +42,9 @@ elif currentos == 'Windows':
 		#CMD command for changing hostname
 		os.system('wmic computersystem where name="%COMPUTERNAME%" call rename name="' +mac + '"')
 		print(mac)
+
 if mac != "null":
 	print(mac)
 else:
-	print("Kunne ikke finde MAC address")
+	print("Couldn't find MAC address")
 print(so.gethostname())
