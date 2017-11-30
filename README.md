@@ -5,4 +5,4 @@ A cross-platform script for changing the hostname of imaged machines based on th
 Primarily used for imaging computers, while keeping their hostnames consistent.
 
 ## Dependencies
-
+* Python 2.7
