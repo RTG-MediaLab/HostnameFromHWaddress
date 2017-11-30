@@ -1,7 +1,7 @@
 
 
 alias = []
-mac = []
 f = open("alias.txt", r)
-for lines in f:
-	
+for line in f:
+	line = line.strip()
+	alias.append(line)
