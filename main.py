@@ -5,6 +5,9 @@ import platform as pl
 import socket as so
 import commands
 
+#custom modules
+from aka import alias
+
 dochange = 0 #Enables or disables the changing of hostnames
 mac = 'null'
 currentos =  pl.system()
@@ -15,6 +18,7 @@ if currentos == 'Linux':
 	print('Du bruger Linux') 
 	iface = 'wlp3s0'
 	mac = commands.getoutput('cat /sys/class/net/' + iface + '/address')
+ 	alias(mac)
 	if dochange == 1:
      		#Change hostname
 		os.system('sudo hostname ' + mac) #The hostname command is volatile, maybe we should consider something else?
@@ -32,12 +36,14 @@ elif currentos == 'Darwin': #Darwin is the name of the kernel that Apple uses fo
 	cutmac = os.popen('ifconfig ' + iface + ' |grep ether').read()
 	halfmac = cutmac.rsplit(' ')
 	mac = halfmac[1]
+	alias(mac)
 	if dochange == 1:
 		os.system("sudo scutil --set HostName " + mac)
 #Windows
 elif currentos == 'Windows':
 	print("Du bruger Windows")
 	mac = os.popen('wmic path win32_networkadapter where index=1 get MACAddress').read()
+ 	alias(mac)
 	if dochange == 1:
 		#CMD command for changing hostname
 		os.system('wmic computersystem where name="%COMPUTERNAME%" call rename name="' +mac + '"')
