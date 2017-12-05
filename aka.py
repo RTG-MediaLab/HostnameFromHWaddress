@@ -9,8 +9,7 @@ def alias(addr):
 	print(aka)
  	for i in mac:
 		if mac[i] == addr:
-      			global fname
-      			fname = aka[i]
+      			return aka[i]
 
 
 
