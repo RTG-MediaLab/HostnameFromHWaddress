@@ -1,6 +1,5 @@
 #Import modules
 import os
-import subprocess as sp
 import platform as pl
 import socket as so
 import commands
