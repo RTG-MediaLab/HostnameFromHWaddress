@@ -46,7 +46,6 @@ elif currentos == 'Windows':
 	if dochange == 1:
 		#CMD command for changing hostname
 		os.system('wmic computersystem where name="%COMPUTERNAME%" call rename name="' +hname + '"')
-		print(mac)
 
 if mac != "null":
 	print(mac)
