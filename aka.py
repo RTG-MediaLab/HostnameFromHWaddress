@@ -1,4 +1,4 @@
-
+import csv
 
 alias = []
 f = open("alias.txt", r)
