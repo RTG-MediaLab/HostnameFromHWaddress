@@ -1,9 +1,12 @@
 from csv import DictReader
 
 
-f = open("alias.csv", "r")
-mac = [row["mac"] for row in DictReader(f)]
-alias = [row["aka"] for row in DictReader(f)]
+with open("alias.csv") as f:
+	mac = [row["mac"] for row in DictReader(f)]
 
-print alias
+with open("alias.csv") as f1:
+	aka = [row["aka"] for row in DictReader(f1)]
+print(aka)
+
+
 
