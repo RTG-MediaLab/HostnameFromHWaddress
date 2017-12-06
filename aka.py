@@ -12,4 +12,5 @@ def alias(addr):
       			return aka[i]
 
 
-
+if __name__ = "__main__":
+    print("this should be ran by another script")
