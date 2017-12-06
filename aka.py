@@ -7,9 +7,10 @@ def alias(addr):
 	with open("alias.csv") as f1:
 		aka = [row["aka"] for row in DictReader(f1)]
 	print(aka)
- 	for i in mac:
+ 	for i in xrange(len(mac)):
 		if mac[i] == addr:
       			return aka[i]
+ 			print mac[i]
 
 
 if __name__ == "__main__":
