@@ -31,7 +31,7 @@ if currentos == 'Linux':
 #MacOS
 elif currentos == 'Darwin': #Darwin is the name of the kernel that Apple uses for MacOS
 	print('Du bruger macOS')
-	iface = "en1"
+	iface = "en0"
 	cutmac = os.popen('ifconfig ' + iface + ' |grep ether').read()
 	halfmac = cutmac.rsplit(' ')
 	mac = halfmac[1]
@@ -44,8 +44,9 @@ elif currentos == 'Windows':
 	mac = os.popen('wmic path win32_networkadapter where index=1 get MACAddress').read()
  	hname = alias(mac)
 	if dochange == 1:
-		#CMD command for changing hostname
-		os.system('wmic computersystem where name="%COMPUTERNAME%" call rename name="' +hname + '"')
+     		if so.gethostname() == hname:
+			#CMD command for changing hostname
+			os.system('powershell Rename-Computer -NewName -Force -Restart "' + hname + '"')
 
 if mac != "null":
 	print(mac)
